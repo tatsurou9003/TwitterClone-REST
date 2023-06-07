@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:14
+    environment:
+      TZ: "Asia/Tokyo"
+    env_file:
+      - ./backend/postgres_credentials.env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api-django:
+    container_name: api_django
+    build: ./backend/api-django
+    volumes:
+      - ./backend/api-django:/backend
+    ports:
+      - "8000:8000"
+    tty: true
+    env_file:
+      - ./backend/postgres_credentials.env
+      - ./backend/django_local_settings.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  react:
+    container_name: react
+    build: ./frontend
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - "3000:3000"
+    tty: true
+    depends_on:
+      - api-django
+
+volumes:
+  postgres-data:
