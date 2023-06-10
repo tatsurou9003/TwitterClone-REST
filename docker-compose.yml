@@ -20,12 +20,12 @@ services:
 
   api-django:
     container_name: api_django
-    build: ./backend/api-django
+    build: ./backend/api-django/twitter
     volumes:
-      - ./backend/api-django:/backend
+      - ./backend/api-django/twitter:/backend
     ports:
       - "8000:8000"
-    tty: true
+    command: python manage.py runserver 0.0.0.0:8000
     env_file:
       - ./backend/postgres_credentials.env
       - ./backend/django_local_settings.env

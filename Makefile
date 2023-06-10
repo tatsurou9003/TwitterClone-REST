@@ -29,9 +29,6 @@ cleanup:
 exec:
 	docker compose -f $(COMPOSE_LOCAL) exec -it api-django bash
 
-runserver:
-	docker compose -f $(COMPOSE_LOCAL) exec -it api-django bash -c "python manage.py runserver"
-
 makemigrations:
 	docker compose -f $(COMPOSE_LOCAL) exec -it api-django bash -c "python manage.py makemigrations"
 
