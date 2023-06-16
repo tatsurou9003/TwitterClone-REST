@@ -50,3 +50,17 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.userName
+    
+class Follow(models.Model):
+    follower = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='followings', on_delete=models.CASCADE)
+    following = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='followers', on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["following", "follower"], name="follow_unique"
+            ),
+        ]
+
+    def __str__(self):
+        return f"{self.follower}follow{self.following}"
