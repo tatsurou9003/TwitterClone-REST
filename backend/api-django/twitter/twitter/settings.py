@@ -97,7 +97,7 @@ SIMPLE_JWT = {
     # アクセストークン:1hour
     'AUTH_TOKEN_LIFETIME': timedelta(minutes=60),
     # リフレッシュトークン:3day
-    'REFRESH_TOKEN_LIFETIME': timedelta(day=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),
 }
 
 

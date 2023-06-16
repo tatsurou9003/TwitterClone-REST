@@ -3,6 +3,7 @@ Django~=4.1
 django-environ~=0.8
 djangorestframework~=3.13
 django-debug-toolbar
+pillow==9.5.0
 
 # CORS
 django-cors-headers==3.4.0
