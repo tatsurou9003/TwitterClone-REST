@@ -20,8 +20,8 @@ class FollowSerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     created_on = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
-    followings = FollowSerializer(source="followings", many=True, read_only=True)
-    followers = FollowSerializer(source="followers", many=True, read_only=True)
+    followings = serializers.SerializerMethodField()
+    followers = serializers.SerializerMethodField()
     followings_count = serializers.SerializerMethodField()
     followers_count = serializers.SerializerMethodField()
 
@@ -30,9 +30,27 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ("id", "userName", "userProfile", "created_on", "img", "followings", "followers", "followings_count", "followers_count")
         extra_kwargs = {"userProfile": {"read_only": True}}
 
+    def get_followings(self, obj):
+        # Userに紐づくFollowインスタンスを取得
+        user = obj.userProfile
+        followings = Follow.objects.filter(follower=user)
+        # FollowSerializerを使用してシリアライズ
+        return FollowSerializer(followings, many=True).data
+
+    def get_followers(self, obj):
+        # Userに紐づくFollowインスタンスを取得
+        user = obj.userProfile
+        followers = Follow.objects.filter(following=user)
+        # FollowSerializerを使用してシリアライズ
+        return FollowSerializer(followers, many=True).data
+
     def get_followings_count(self, obj):
-        return obj.followings.count()
+        # followingsのカウント
+        user = obj.userProfile
+        return Follow.objects.filter(follower=user).count()
 
     def get_followers_count(self, obj):
-        return obj.followers.count()
+        # followersのカウント
+        user = obj.userProfile
+        return Follow.objects.filter(following=user).count()
 

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Post
 
-class PostSerializer(serializers.model_meta):
+class PostSerializer(serializers.ModelSerializer):
     created_on = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
 
     class Meta:
