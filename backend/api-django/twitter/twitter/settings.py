@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "posts.apps.PostsConfig",
     "users.apps.UsersConfig",
     "corsheaders",
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    "https://localhost:3000"
+    "http://localhost:3000",
 ]
 
 ROOT_URLCONF = "twitter.urls"
@@ -93,7 +94,7 @@ REST_FRAMEWORK = {
 
 SIMPLE_JWT = {
     # 認証タイプ
-    'AUTH_HEADER_TYPES': ('JWT', ),
+    'AUTH_HEADER_TYPES': ('JWT',),
     # アクセストークン:1hour
     'AUTH_TOKEN_LIFETIME': timedelta(minutes=60),
     # リフレッシュトークン:3day
