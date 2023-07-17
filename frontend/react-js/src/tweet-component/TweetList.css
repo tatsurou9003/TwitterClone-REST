@@ -1,0 +1,23 @@
+.tweet-list {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 400px;
+  }
+  
+  .tweet-list h2 {
+    margin-top: 0;
+  }
+  
+  .tweet-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .tweet-list li {
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
