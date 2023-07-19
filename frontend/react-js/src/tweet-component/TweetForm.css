@@ -1,0 +1,37 @@
+.tweet-form {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 400px;
+  }
+  
+  .tweet-form h2 {
+    margin-top: 0;
+  }
+  
+  .tweet-form textarea {
+    width: 95%;
+    resize: none; /* テキストエリアのサイズを固定 */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .tweet-form button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tweet-form button:hover {
+    background-color: #45a049;
+  }

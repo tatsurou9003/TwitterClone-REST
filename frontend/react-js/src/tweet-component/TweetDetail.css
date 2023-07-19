@@ -1,0 +1,16 @@
+.tweet-detail {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    max-width: 400px;
+    flex: 4; /* 画面の横の割合 */
+  }
+  
+  .tweet-detail h2 {
+    margin-top: 0;
+  }
+  
+  .tweet-detail p {
+    white-space: pre-line; /* ツイート内容を改行できるようにする */
+  }

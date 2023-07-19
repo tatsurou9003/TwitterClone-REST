@@ -1,2 +1,2 @@
 FROM node:16
-WORKDIR /frontend
+WORKDIR /frontend/react-js
