@@ -28,11 +28,10 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="tweet-list">
       <h1>Tweet_List</h1>
       {posts.map((post) => (
         <div key={post.id}>
-          <p>{post.userPost}</p>
           <h2>{post.title}</h2>
         </div>
       ))}
